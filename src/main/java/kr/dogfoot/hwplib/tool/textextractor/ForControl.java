@@ -50,7 +50,7 @@ public class ForControl {
                     table((ControlTable) c, option, paraHeadMaker, sb);
                     break;
                 case Gso:
-                    ForGso.extract((GsoControl) c, option, paraHeadMaker, sb);
+//                    ForGso.extract((GsoControl) c, option, paraHeadMaker, sb);
                     break;
                 case Equation:
                     equation((ControlEquation) c, sb);
@@ -60,16 +60,16 @@ public class ForControl {
                 case ColumnDefine:
                     break;
                 case Header:
-                    header((ControlHeader) c, option, paraHeadMaker, sb);
+//                    header((ControlHeader) c, option, paraHeadMaker, sb);
                     break;
                 case Footer:
-                    footer((ControlFooter) c, option, paraHeadMaker, sb);
+//                    footer((ControlFooter) c, option, paraHeadMaker, sb);
                     break;
                 case Footnote:
-                    footnote((ControlFootnote) c, option, paraHeadMaker, sb);
+//                    footnote((ControlFootnote) c, option, paraHeadMaker, sb);
                     break;
                 case Endnote:
-                    endnote((ControlEndnote) c, option, paraHeadMaker, sb);
+//                    endnote((ControlEndnote) c, option, paraHeadMaker, sb);
                     break;
                 case AutoNumber:
                     break;
@@ -126,7 +126,7 @@ public class ForControl {
      * @param sb       추출된 텍스트를 저정할 StringBuffer 객체
      */
     private static void equation(ControlEquation equation, StringBuffer sb) {
-        sb.append(equation.getEQEdit().getScript()).append("\n");
+        sb.append(equation.getEQEdit().getScript().toUTF16LEString());
     }
 
     /**

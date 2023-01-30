@@ -216,7 +216,6 @@ public class ForParagraphList {
                     case ControlExtend:
                         if (startIndex <= charIndex && charIndex <= endIndex) {
                             if (option.getMethod() == TextExtractMethod.InsertControlTextBetweenParagraphText) {
-                                sb.append("\n");
                                 ForControl.extract(p.getControlList().get(controlIndex),
                                         option,
                                         paraHeadMaker,
@@ -275,8 +274,8 @@ public class ForParagraphList {
                                  TextExtractOption option,
                                  ParaHeadMaker paraHeadMaker,
                                  StringBuffer sb) throws UnsupportedEncodingException {
-        if (option.isInsertParaHead() == true && paraHeadMaker != null) {
-            sb.append(paraHeadMaker.paraHeadString(p)).append(" ");
+        if (option.isInsertParaHead() && paraHeadMaker != null) {
+            sb.append(paraHeadMaker.paraHeadString(p));
         }
 
         ParaText pt = p.getText();
@@ -295,7 +294,6 @@ public class ForParagraphList {
                         break;
                     case ControlExtend:
                         if (option.getMethod() == TextExtractMethod.InsertControlTextBetweenParagraphText) {
-                            sb.append("\n");
                             ForControl.extract(p.getControlList().get(controlIndex),
                                     option,
                                     paraHeadMaker,

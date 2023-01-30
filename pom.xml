@@ -7,6 +7,14 @@
     <artifactId>hwplib</artifactId>
     <packaging>jar</packaging>
     <version>1.1.1</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.18</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
     <name>HWP Library</name>
     <description>The hwp library is a library that can read and write hwp files used in the word processor developed by Hancom.</description>

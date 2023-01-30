@@ -3,3 +3,6 @@
 test/
 
 src/test/
+.idea
+out/
+target/
