@@ -3,14 +3,10 @@ package kr.dogfoot.hwplib.reader;
 import kr.dogfoot.hwplib.object.HWPFile;
 import kr.dogfoot.hwplib.object.docinfo.BinData;
 import kr.dogfoot.hwplib.object.docinfo.bindata.BinDataCompress;
-import kr.dogfoot.hwplib.object.docinfo.style.StyleSort;
 import kr.dogfoot.hwplib.object.etc.HWPTag;
 import kr.dogfoot.hwplib.object.fileheader.FileVersion;
-import kr.dogfoot.hwplib.org.apache.poi.hpsf.Property;
-import kr.dogfoot.hwplib.org.apache.poi.hpsf.PropertySet;
 import kr.dogfoot.hwplib.org.apache.poi.hpsf.SummaryInformation;
 import kr.dogfoot.hwplib.org.apache.poi.poifs.filesystem.DocumentInputStream;
-import kr.dogfoot.hwplib.org.apache.poi.util.IOUtils;
 import kr.dogfoot.hwplib.reader.bodytext.ForParagraphList;
 import kr.dogfoot.hwplib.reader.bodytext.ForSection;
 import kr.dogfoot.hwplib.reader.bodytext.memo.ForMemo;
@@ -21,10 +17,7 @@ import kr.dogfoot.hwplib.util.compoundFile.reader.CompoundFileReader;
 import kr.dogfoot.hwplib.util.compoundFile.reader.StreamReader;
 
 import javax.xml.bind.DatatypeConverter;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.Set;
@@ -388,10 +381,18 @@ public class HWPReader {
     }
 
     private void summaryInformation() throws Exception {
-        DocumentInputStream dis = cfr.getChildInputStream("\u0005HwpSummaryInformation");
+        DocumentInputStream dis;;
+
+        try {
+            dis = cfr.getChildInputStream("\u0005HwpSummaryInformation");
+        }
+        catch (FileNotFoundException e) {
+            dis = null;
+        }
+
         if (dis != null) {
             hwpFile.setSummaryInformation(new SummaryInformation(dis));
+            dis.close();
         }
-        dis.close();
     }
 }

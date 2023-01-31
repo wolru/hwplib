@@ -50,7 +50,7 @@ public class ForControl {
                     table((ControlTable) c, option, paraHeadMaker, sb);
                     break;
                 case Gso:
-//                    ForGso.extract((GsoControl) c, option, paraHeadMaker, sb);
+                    ForGso.extract((GsoControl) c, option, paraHeadMaker, sb);
                     break;
                 case Equation:
                     equation((ControlEquation) c, sb);
@@ -112,11 +112,13 @@ public class ForControl {
                               TextExtractOption option,
                               ParaHeadMaker paraHeadMaker,
                               StringBuffer sb) throws UnsupportedEncodingException {
+        sb.append("<Table>\n");
         for (Row r : table.getRowList()) {
             for (Cell c : r.getCellList()) {
                 ForParagraphList.extract(c.getParagraphList(), option, paraHeadMaker, sb);
             }
         }
+        sb.append("</Table>");
     }
 
     /**
@@ -126,7 +128,7 @@ public class ForControl {
      * @param sb       추출된 텍스트를 저정할 StringBuffer 객체
      */
     private static void equation(ControlEquation equation, StringBuffer sb) {
-        sb.append(equation.getEQEdit().getScript().toUTF16LEString());
+        sb.append("<Equation>").append(equation.getEQEdit().getScript().toUTF16LEString()).append("</Equation>");
     }
 
     /**
