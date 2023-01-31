@@ -275,7 +275,11 @@ public class ForParagraphList {
                                  ParaHeadMaker paraHeadMaker,
                                  StringBuffer sb) throws UnsupportedEncodingException {
         if (option.isInsertParaHead() && paraHeadMaker != null) {
-            sb.append(paraHeadMaker.paraHeadString(p));
+            String headString = paraHeadMaker.paraHeadString(p);
+            if (!headString.isEmpty()) {
+                sb.append("\n");
+            }
+            sb.append(headString);
         }
 
         ParaText pt = p.getText();
