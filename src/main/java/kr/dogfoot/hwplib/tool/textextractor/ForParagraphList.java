@@ -291,7 +291,7 @@ public class ForParagraphList {
                 switch (ch.getType()) {
                     case Normal:
                         if (lastType != HWPCharType.Normal) {
-                            ExtractorHelper.appendNormalStartTag(sb);
+                            ExtractorHelper.appendNormalStartTag(option, sb);
                         }
                         normalText(ch, sb);
                         break;
@@ -299,14 +299,14 @@ public class ForParagraphList {
                     case ControlInline:
                         if (option.isWithControlChar()) {
                             if (lastType == HWPCharType.Normal) {
-                                ExtractorHelper.appendNormalEndTag(sb);
+                                ExtractorHelper.appendNormalEndTag(option, sb);
                             }
                             controlText(ch, sb);
                         }
                         break;
                     case ControlExtend:
                         if (lastType == HWPCharType.Normal) {
-                            ExtractorHelper.appendNormalEndTag(sb);
+                            ExtractorHelper.appendNormalEndTag(option, sb);
                         }
                         if (option.getMethod() == TextExtractMethod.InsertControlTextBetweenParagraphText) {
                             ForControl.extract(p.getControlList().get(controlIndex),

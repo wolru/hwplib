@@ -204,6 +204,6 @@ public class ForGso {
                                   ParaHeadMaker paraHeadMaker,
                                   StringBuffer sb) throws UnsupportedEncodingException {
         int binItemId = container.getShapeComponentPicture().getPictureInfo().getBinItemID();
-        ExtractorHelper.appendImageTag(sb, binItemId);
+        ExtractorHelper.appendImageTag(option, sb, binItemId);
     }
 }
