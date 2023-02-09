@@ -23,7 +23,7 @@ public class ExtractorHelper {
     }
 
     public static void appendImageTag(TextExtractOption option, StringBuffer sb, int data) {
-        insertTag(option, sb, "<Image>\n");
+        insertTag(option, sb, "<Image>");
         sb.append(data);
         insertTag(option, sb, "</Image>");
     }
