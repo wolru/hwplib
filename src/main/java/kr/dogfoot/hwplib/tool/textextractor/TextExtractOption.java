@@ -10,7 +10,7 @@ public class TextExtractOption {
 
     public TextExtractOption() {
         method = TextExtractMethod.InsertControlTextBetweenParagraphText;
-        withControlChar = false;
+        withControlChar = true;
         appendEndingLF = true;
         insertParaHead = true;
         insertTag = false;
@@ -18,7 +18,7 @@ public class TextExtractOption {
 
     public TextExtractOption(TextExtractMethod method) {
         this.method = method;
-        withControlChar = false;
+        withControlChar = true;
         appendEndingLF = true;
         insertParaHead = true;
         insertTag = false;
