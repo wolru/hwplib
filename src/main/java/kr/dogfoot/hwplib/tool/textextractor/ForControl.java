@@ -114,13 +114,13 @@ public class ForControl {
                               StringBuffer sb) throws UnsupportedEncodingException {
         StringBuffer stringBuffer = new StringBuffer();
         for (Row r : table.getRowList()) {
-            ExtractorHelper.insertTag(option, stringBuffer, "<Row>\n");
+            ExtractorHelper.insertTag(option, stringBuffer, "<tr>\n");
             for (Cell c : r.getCellList()) {
-                ExtractorHelper.insertTag(option, stringBuffer, "<Cell>\n");
+                ExtractorHelper.insertTag(option, stringBuffer, "<td>\n");
                 ForParagraphList.extract(c.getParagraphList(), option, paraHeadMaker, stringBuffer);
-                ExtractorHelper.insertTag(option, stringBuffer, "</Cell>\n");
+                ExtractorHelper.insertTag(option, stringBuffer, "</td>\n");
             }
-            ExtractorHelper.insertTag(option, stringBuffer, "</Row>\n");
+            ExtractorHelper.insertTag(option, stringBuffer, "</tr>\n");
         }
         ExtractorHelper.appendTableTag(option, sb, stringBuffer.toString());
     }
